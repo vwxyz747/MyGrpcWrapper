@@ -3,5 +3,3 @@
 @_exported import GRPC
 @_exported import SwiftProtobuf
 @_exported import NIO
-@_exported import NIOHTTP1
-@_exported import NIOTransportServices
