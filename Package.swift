@@ -25,9 +25,7 @@ let package = Package(
                 dependencies: [
                     .product(name: "GRPC", package: "grpc-swift"),
                     .product(name: "SwiftProtobuf", package: "swift-protobuf"),
-                    .product(name: "NIO", package: "swift-nio"),
-                    .product(name: "NIOHTTP1", package: "swift-nio"),
-                    .product(name: "NIOTransportServices", package: "swift-nio"),
+                    .product(name: "NIO", package: "swift-nio")
                 ],
                 swiftSettings: [
                     .unsafeFlags(["-Xfrontend", "-disable-availability-checking"])
