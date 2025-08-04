@@ -4,10 +4,10 @@ set -euo pipefail
 NAME="MyGrpcWrapper"
 SCHEME="MyGrpcWrapper"
 
-# 通用 Swift Flags（關閉 Swift 6 嚴格特性）
+# Swift 編譯旗標（避免 Swift 6 錯誤）
 SWIFT_FLAGS="-Xfrontend -disable-availability-checking"
 
-# 清理舊資料
+# 清除舊的建構結果
 rm -rf build
 mkdir -p build
 
@@ -18,6 +18,7 @@ xcodebuild archive \
   -archivePath "build/ios_devices.xcarchive" \
   SKIP_INSTALL=NO \
   BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+  SWIFT_VERSION=5 \
   OTHER_SWIFT_FLAGS="$SWIFT_FLAGS"
 
 echo "📱 Building iOS Simulator archive..."
@@ -27,6 +28,7 @@ xcodebuild archive \
   -archivePath "build/ios_simulator.xcarchive" \
   SKIP_INSTALL=NO \
   BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+  SWIFT_VERSION=5 \
   OTHER_SWIFT_FLAGS="$SWIFT_FLAGS"
 
 echo "🖥  Building macOS archive..."
@@ -36,6 +38,7 @@ xcodebuild archive \
   -archivePath "build/macos.xcarchive" \
   SKIP_INSTALL=NO \
   BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+  SWIFT_VERSION=5 \
   OTHER_SWIFT_FLAGS="$SWIFT_FLAGS"
 
 echo "🧩 Creating XCFramework..."
