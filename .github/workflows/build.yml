@@ -29,14 +29,16 @@ jobs:
       - name: Resolve dependencies
         run: swift package resolve
 
-      - name: Archive iOS framework
+      - name: Archive iOS framework (Swift 5.9)
         run: |
           xcodebuild archive \
             -scheme MyGrpcWrapper \
             -destination "generic/platform=iOS" \
             -archivePath build/MyGrpcWrapper-iOS.xcarchive \
+            -sdk iphoneos \
             SKIP_INSTALL=NO \
-            BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+            BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+            OTHER_SWIFT_FLAGS="-swift-version 5.9"
 
       - name: Create XCFramework
         run: |
@@ -49,4 +51,3 @@ jobs:
         with:
           name: MyGrpcWrapper.xcframework
           path: MyGrpcWrapper.xcframework
-
